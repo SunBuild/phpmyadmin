@@ -27,11 +27,9 @@ $i = 0;
 
 
 //Check if MySQL in-app is turned on
-$is_mysqlinapp_on = false;
 if ($_SERVER['MySQLCONNSTR_localdb'])
 {
-    $is_mysqlinapp_on = true; 
-    require_once('ping-azure-webapp.php');
+  require_once('ping-azure-webapp.php');
 }
 
 foreach ($_SERVER as $key => $value) {
@@ -51,7 +49,6 @@ foreach ($_SERVER as $key => $value) {
     /* Select mysql if your server does not have mysqli */
     $cfg['Servers'][$i]['extension'] = 'mysqli';
     $cfg['Servers'][$i]['AllowNoPassword'] = false;
-    $cfg['Servers'][$i]['mysqlinapp'] = $is_mysqlinapp_on ;
 }
 
 
